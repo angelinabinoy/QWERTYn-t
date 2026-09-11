@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>QWERTYn't</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="typing.css">
+    <link rel="stylesheet" href="results.css">
+   
+
+</head>
+
+
+<body>
+
+    <div class="pc">
+
+        <!-- =====================================
+             MONITOR
+        ====================================== -->
+
+        <div class="monitor">
+
+            <div class="screen">
+
+
+                <!-- =================================
+                     TOP BAR
+                ================================== -->
+
+                <header class="topbar">
+
+                    <div class="brand">
+
+                        <span class="brand-dot"></span>
+
+                        QWERTYn't
+
+                    </div>
+
+
+                    <div class="system-status">
+
+                        <span class="status-dot"></span>
+
+                        SYSTEM ONLINE
+
+                    </div>
+
+                </header>
+
+
+
+                <!-- =================================
+                     MAIN SCREEN
+                ================================== -->
+
+                <main class="screen-content">
+
+
+                    <!-- =================================
+                         HERO
+                    ================================== -->
+
+                    <section class="hero">
+
+                        <div class="eyebrow">
+                            VIRTUAL COMPUTER
+                        </div>
+
+
+                        <h1>
+
+                            Your keyboard is
+
+                            <span>
+                                not what it seems.
+                            </span>
+
+                        </h1>
+
+
+                        <p>
+
+                            Type normally using your physical keyboard.
+
+                            <br>
+
+                            We'll take care of the rest.
+
+                        </p>
+
+                    </section>
+
+
+
+                    <!-- =================================
+                         TYPING CHALLENGE
+                    ================================== -->
+
+                    <section class="challenge">
+
+                        <div class="challenge-label">
+                            TYPING CHALLENGE
+                        </div>
+
+
+                        <div
+                            id="challenge"
+                            class="challenge-text"
+                        >
+                            Loading challenge...
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- =================================
+                         EDITOR
+                    ================================== -->
+
+                    <section class="editor">
+
+
+                        <!-- Editor Header -->
+
+                        <div class="editor-header">
+
+                            <div class="editor-title">
+
+                                <span class="file-icon">
+                                    ⌘
+                                </span>
+
+                                untitled.txt
+
+                            </div>
+
+
+                            <div class="editor-status">
+
+                                <span id="keyStatus">
+                                    READY TO TYPE
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Text Area -->
+
+                        <textarea
+                            id="output"
+                            spellcheck="false"
+                            autocomplete="off"
+                            autocorrect="off"
+                            placeholder="Start typing..."
+                        ></textarea>
+
+
+
+                        <!-- Editor Footer -->
+
+                        <div class="editor-footer">
+
+                            <span>
+
+                                <span class="live-dot"></span>
+
+                                Listening to physical keyboard
+
+                            </span>
+
+
+                            <span id="characterCount">
+
+                                0 characters
+
+                            </span>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- =================================
+                         INPUT / OUTPUT
+                    ================================== -->
+
+                    <section class="keyboard-info">
+
+
+                        <!-- Physical Input -->
+
+                        <div class="info-card">
+
+                            <div class="info-label">
+                                INPUT
+                            </div>
+
+
+                            <div
+                                class="info-value"
+                                id="pressedKey"
+                            >
+                                —
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Arrow -->
+
+                        <div class="mapping-arrow">
+
+                            →
+
+                        </div>
+
+
+
+                        <!-- Remapped Output -->
+
+                        <div class="info-card highlight">
+
+                            <div class="info-label">
+                                OUTPUT
+                            </div>
+
+
+                            <div
+                                class="info-value"
+                                id="mappedKey"
+                            >
+                                —
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </main>
+
+
+
+                <!-- =================================
+                     SCREEN FOOTER
+                ================================== -->
+
+                <footer class="screen-footer">
+
+                    <span>
+                        QWERTYn't OS
+                    </span>
+
+
+                    <span>
+                        Physical keyboard active
+                    </span>
+
+                </footer>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             MONITOR STAND
+        ====================================== -->
+
+        <div class="monitor-stand">
+
+            <div class="stand-neck"></div>
+
+            <div class="stand-base"></div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             DESK
+        ====================================== -->
+
+        <div class="desk"></div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="challenges.js"></script>
+
+    <script src="keyboard.js"></script>
+
+    <script src="timer.js"></script>
+
+    <script src="statistics.js"></script>
+
+    <script src="typingEngine.js"></script>
+
+    <script src="main.js"></script>
+
+
+</body>
+
+</html>

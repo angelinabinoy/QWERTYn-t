@@ -1,0 +1,537 @@
+/* =========================================
+   QWERTYn't - MAIN UI
+========================================= */
+
+:root {
+    --bg: #080b10;
+    --monitor: #151a22;
+    --screen: #0d1b2a;
+
+    --primary: #6ee7d8;
+    --primary-soft: #9ff3e9;
+
+    --text: #f4f7f8;
+    --muted: #8997a6;
+
+    --panel: #132638;
+    --panel-light: #193247;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at top,
+            #101b28 0%,
+            var(--bg) 55%
+        );
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   COMPUTER
+========================================= */
+
+.pc {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px 0;
+}
+
+
+/* =========================================
+   MONITOR
+========================================= */
+
+.monitor {
+    width: min(1100px, 95vw);
+
+    background: var(--monitor);
+
+    padding: 14px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+        0 30px 70px var(--shadow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================
+   SCREEN
+========================================= */
+
+.screen {
+    min-height: 650px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(110, 231, 216, 0.06),
+            transparent 40%
+        ),
+        var(--screen);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topbar {
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+.brand-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    box-shadow:
+        0 0 10px rgba(110, 231, 216, 0.7);
+}
+
+.system-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #6ee7d8;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.screen-content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 55px 30px 45px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    width: min(780px, 90%);
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    color: var(--primary);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 13px;
+}
+
+.hero h1 {
+    font-size: clamp(28px, 4vw, 46px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    font-weight: 750;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    margin-top: 17px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   EDITOR
+========================================= */
+
+.editor {
+    width: min(780px, 90%);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: rgba(0, 0, 0, 0.18);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+   EDITOR HEADER
+========================================= */
+
+.editor-header {
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 15px;
+
+    background: var(--panel);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.editor-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #dbe5ea;
+
+    font-size: 11px;
+}
+
+.file-icon {
+    color: var(--primary);
+
+    font-size: 13px;
+}
+
+.editor-status {
+    color: var(--muted);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+#output {
+    width: 100%;
+
+    min-height: 230px;
+
+    resize: none;
+
+    display: block;
+
+    padding: 22px;
+
+    border: none;
+
+    outline: none;
+
+    background: #0a1724;
+
+    color: #e6f1f3;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    caret-color: var(--primary);
+}
+
+#output::placeholder {
+    color: #536777;
+}
+
+#output:focus {
+    box-shadow:
+        inset 0 0 0 1px rgba(110, 231, 216, 0.15);
+}
+
+
+/* =========================================
+   EDITOR FOOTER
+========================================= */
+
+.editor-footer {
+    min-height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 15px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    background: var(--panel);
+
+    border-top: 1px solid var(--border);
+}
+
+.live-dot {
+    display: inline-block;
+
+    width: 5px;
+    height: 5px;
+
+    margin-right: 6px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+}
+
+
+/* =========================================
+   SCREEN FOOTER
+========================================= */
+
+.screen-footer {
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    color: #607181;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================================
+   MONITOR STAND
+========================================= */
+
+.monitor-stand {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.stand-neck {
+    width: 100px;
+    height: 55px;
+
+    background: var(--monitor);
+
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+.stand-base {
+    width: 220px;
+    height: 12px;
+
+    border-radius: 8px 8px 2px 2px;
+
+    background: #12171e;
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   DESK
+========================================= */
+
+.desk {
+    width: min(1300px, 100vw);
+
+    height: 18px;
+
+    margin-top: 8px;
+
+    background: #10151c;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    box-shadow:
+        0 -5px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .pc {
+        padding: 20px 10px 0;
+    }
+
+    .monitor {
+        width: 100%;
+
+        padding: 7px;
+
+        border-radius: 12px;
+    }
+
+    .screen {
+        min-height: 600px;
+    }
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+    .screen-content {
+        padding: 40px 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+    .editor,
+    .challenge {
+        width: 100%;
+    }
+
+    .keyboard-info {
+        width: 100%;
+    }
+
+    .stand-base {
+        width: 150px;
+    }
+}
