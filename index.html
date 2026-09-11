@@ -1,326 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QWERTYn't | Alphabetical & Reversed Numbers Typing Challenge</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>QWERTYn't</title>
-
+    <!-- CSS Files -->
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="typing.css">
     <link rel="stylesheet" href="results.css">
-   
-
 </head>
-
-
 <body>
 
-    <div class="pc">
+    <div class="app-container">
 
         <!-- =====================================
-             MONITOR
+             TOP HEADER & BRAND
         ====================================== -->
-
-        <div class="monitor">
-
-            <div class="screen">
-
-
-                <!-- =================================
-                     TOP BAR
-                ================================== -->
-
-                <header class="topbar">
-
-                    <div class="brand">
-
-                        <span class="brand-dot"></span>
-
-                        QWERTYn't
-
-                    </div>
-
-
-                    <div class="system-status">
-
-                        <span class="status-dot"></span>
-
-                        SYSTEM ONLINE
-
-                    </div>
-
-                </header>
-
-
-
-                <!-- =================================
-                     MAIN SCREEN
-                ================================== -->
-
-                <main class="screen-content">
-
-
-                    <!-- =================================
-                         HERO
-                    ================================== -->
-
-                    <section class="hero">
-
-                        <div class="eyebrow">
-                            VIRTUAL COMPUTER
-                        </div>
-
-
-                        <h1>
-
-                            Your keyboard is
-
-                            <span>
-                                not what it seems.
-                            </span>
-
-                        </h1>
-
-
-                        <p>
-
-                            Type normally using your physical keyboard.
-
-                            <br>
-
-                            We'll take care of the rest.
-
-                        </p>
-
-                    </section>
-
-
-
-                    <!-- =================================
-                         TYPING CHALLENGE
-                    ================================== -->
-
-                    <section class="challenge">
-
-                        <div class="challenge-label">
-                            TYPING CHALLENGE
-                        </div>
-
-
-                        <div
-                            id="challenge"
-                            class="challenge-text"
-                        >
-                            Loading challenge...
-                        </div>
-
-                    </section>
-
-
-
-                    <!-- =================================
-                         EDITOR
-                    ================================== -->
-
-                    <section class="editor">
-
-
-                        <!-- Editor Header -->
-
-                        <div class="editor-header">
-
-                            <div class="editor-title">
-
-                                <span class="file-icon">
-                                    ⌘
-                                </span>
-
-                                untitled.txt
-
-                            </div>
-
-
-                            <div class="editor-status">
-
-                                <span id="keyStatus">
-                                    READY TO TYPE
-                                </span>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- Text Area -->
-
-                        <textarea
-                            id="output"
-                            spellcheck="false"
-                            autocomplete="off"
-                            autocorrect="off"
-                            placeholder="Start typing..."
-                        ></textarea>
-
-
-
-                        <!-- Editor Footer -->
-
-                        <div class="editor-footer">
-
-                            <span>
-
-                                <span class="live-dot"></span>
-
-                                Listening to physical keyboard
-
-                            </span>
-
-
-                            <span id="characterCount">
-
-                                0 characters
-
-                            </span>
-
-                        </div>
-
-                    </section>
-
-
-
-                    <!-- =================================
-                         INPUT / OUTPUT
-                    ================================== -->
-
-                    <section class="keyboard-info">
-
-
-                        <!-- Physical Input -->
-
-                        <div class="info-card">
-
-                            <div class="info-label">
-                                INPUT
-                            </div>
-
-
-                            <div
-                                class="info-value"
-                                id="pressedKey"
-                            >
-                                —
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- Arrow -->
-
-                        <div class="mapping-arrow">
-
-                            →
-
-                        </div>
-
-
-
-                        <!-- Remapped Output -->
-
-                        <div class="info-card highlight">
-
-                            <div class="info-label">
-                                OUTPUT
-                            </div>
-
-
-                            <div
-                                class="info-value"
-                                id="mappedKey"
-                            >
-                                —
-                            </div>
-
-                        </div>
-
-                    </section>
-
-                </main>
-
-
-
-                <!-- =================================
-                     SCREEN FOOTER
-                ================================== -->
-
-                <footer class="screen-footer">
-
-                    <span>
-                        QWERTYn't OS
-                    </span>
-
-
-                    <span>
-                        Physical keyboard active
-                    </span>
-
-                </footer>
-
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-dot"></span>
+                <span class="brand-name">QWERTYn't</span>
+                <span class="brand-tag">v2.0</span>
             </div>
 
-        </div>
+            <!-- MODE CONFIGURATOR BAR (MONKEYTYPE STYLE) -->
+            <div class="config-bar" id="configBar">
+                <!-- Mode Category -->
+                <div class="config-group" id="modeGroup">
+                    <button class="config-btn active" data-mode-type="mode" data-value="words">words</button>
+                    <button class="config-btn" data-mode-type="mode" data-value="time">time</button>
+                    <button class="config-btn" data-mode-type="mode" data-value="quote">quote</button>
+                </div>
 
+                <div class="config-divider"></div>
+
+                <!-- Sub-options (Words / Time count) -->
+                <div class="config-group" id="subOptionGroup">
+                    <button class="config-btn" data-mode-type="sub" data-value="10">10</button>
+                    <button class="config-btn active" data-mode-type="sub" data-value="25">25</button>
+                    <button class="config-btn" data-mode-type="sub" data-value="50">50</button>
+                </div>
+
+                <div class="config-divider"></div>
+
+                <!-- Toggles -->
+                <div class="config-group">
+                    <button class="config-btn" id="toggleNumbersBtn" title="Toggle Reversed Numbers">
+                        <span class="btn-icon">#</span> numbers
+                    </button>
+                    <button class="config-btn active" id="toggleSoundBtn" title="Toggle Key Sound Effects">
+                        <span class="btn-icon">🔊</span> sound
+                    </button>
+                    <button class="config-btn active" id="toggleKeyboardBtn" title="Toggle On-Screen Keyboard">
+                        <span class="btn-icon">⌨</span> keyboard
+                    </button>
+                </div>
+            </div>
+
+            <!-- SYSTEM STATUS -->
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <span>REMAPPED SYSTEM ONLINE</span>
+            </div>
+        </header>
 
 
         <!-- =====================================
-             MONITOR STAND
+             MAIN SCREEN CONTENT
         ====================================== -->
+        <main class="main-content">
 
-        <div class="monitor-stand">
+            <!-- HERO SUBHEADER -->
+            <section class="hero-header">
+                <h1>Your muscle memory is <span>useless</span> here.</h1>
+            </section>
 
-            <div class="stand-neck"></div>
 
-            <div class="stand-base"></div>
+            <!-- LIVE STATS BAR DURING TYPING -->
+            <div class="live-stats-bar" id="liveStatsBar">
+                <div class="stat-pill">
+                    <span class="stat-pill-label">WPM</span>
+                    <span class="stat-pill-val" id="liveWpm">0</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-pill-label">TRUST LEVEL</span>
+                    <span class="stat-pill-val" id="liveAcc">100%</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-pill-label">PROGRESS</span>
+                    <span class="stat-pill-val" id="liveProgress">0%</span>
+                </div>
+            </div>
 
-        </div>
 
+            <!-- =====================================
+                 MONKEYTYPE WORD STREAM DISPLAY
+            ====================================== -->
+            <section class="typing-area" id="typingArea">
+                <div class="words-container" id="wordsContainer">
+                    <!-- Spans generated dynamically by typingEngine.js -->
+                </div>
+            </section>
+
+
+            <!-- =====================================
+                 ON-SCREEN VIRTUAL KEYBOARD
+            ====================================== -->
+            <section class="keyboard-wrapper" id="keyboardWrapper">
+                <div class="keyboard-title">KEYBOARD</div>
+
+                <div class="virtual-keyboard" id="virtualKeyboard">
+                    <!-- Row 0: Numbers (1 2 3 4 5 6 7 8 9 0) -->
+                    <div class="kb-row num-row">
+                        <div class="key" data-phys="1"><span class="key-output">1</span></div>
+                        <div class="key" data-phys="2"><span class="key-output">2</span></div>
+                        <div class="key" data-phys="3"><span class="key-output">3</span></div>
+                        <div class="key" data-phys="4"><span class="key-output">4</span></div>
+                        <div class="key" data-phys="5"><span class="key-output">5</span></div>
+                        <div class="key" data-phys="6"><span class="key-output">6</span></div>
+                        <div class="key" data-phys="7"><span class="key-output">7</span></div>
+                        <div class="key" data-phys="8"><span class="key-output">8</span></div>
+                        <div class="key" data-phys="9"><span class="key-output">9</span></div>
+                        <div class="key" data-phys="0"><span class="key-output">0</span></div>
+                    </div>
+
+                    <!-- Row 1: Q W E R T Y U I O P -->
+                    <div class="kb-row">
+                        <div class="key" data-phys="q"><span class="key-output">Q</span></div>
+                        <div class="key" data-phys="w"><span class="key-output">W</span></div>
+                        <div class="key" data-phys="e"><span class="key-output">E</span></div>
+                        <div class="key" data-phys="r"><span class="key-output">R</span></div>
+                        <div class="key" data-phys="t"><span class="key-output">T</span></div>
+                        <div class="key" data-phys="y"><span class="key-output">Y</span></div>
+                        <div class="key" data-phys="u"><span class="key-output">U</span></div>
+                        <div class="key" data-phys="i"><span class="key-output">I</span></div>
+                        <div class="key" data-phys="o"><span class="key-output">O</span></div>
+                        <div class="key" data-phys="p"><span class="key-output">P</span></div>
+                    </div>
+
+                    <!-- Row 2: A S D F G H J K L -->
+                    <div class="kb-row indent-1">
+                        <div class="key" data-phys="a"><span class="key-output">A</span></div>
+                        <div class="key" data-phys="s"><span class="key-output">S</span></div>
+                        <div class="key" data-phys="d"><span class="key-output">D</span></div>
+                        <div class="key" data-phys="f"><span class="key-output">F</span></div>
+                        <div class="key" data-phys="g"><span class="key-output">G</span></div>
+                        <div class="key" data-phys="h"><span class="key-output">H</span></div>
+                        <div class="key" data-phys="j"><span class="key-output">J</span></div>
+                        <div class="key" data-phys="k"><span class="key-output">K</span></div>
+                        <div class="key" data-phys="l"><span class="key-output">L</span></div>
+                    </div>
+
+                    <!-- Row 3: Z X C V B N M -->
+                    <div class="kb-row indent-2">
+                        <div class="key" data-phys="z"><span class="key-output">Z</span></div>
+                        <div class="key" data-phys="x"><span class="key-output">X</span></div>
+                        <div class="key" data-phys="c"><span class="key-output">C</span></div>
+                        <div class="key" data-phys="v"><span class="key-output">V</span></div>
+                        <div class="key" data-phys="b"><span class="key-output">B</span></div>
+                        <div class="key" data-phys="n"><span class="key-output">N</span></div>
+                        <div class="key" data-phys="m"><span class="key-output">M</span></div>
+                    </div>
+
+                    <!-- Row 4: Spacebar -->
+                    <div class="kb-row">
+                        <div class="key key-space" data-phys=" "><span class="key-output">SPACEBAR</span></div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- =====================================
+                 RESTART CONTROLS
+            ====================================== -->
+            <section class="remap-hud">
+                <button class="restart-btn" id="restartBtn" title="Restart Test (Tab + Enter)">
+                    <span class="restart-icon">↻</span> Restart
+                </button>
+            </section>
+
+        </main>
 
 
         <!-- =====================================
-             DESK
+             MONKEYTYPE RESULTS MODAL OVERLAY
         ====================================== -->
+        <div class="results-overlay hidden" id="resultsOverlay">
+            <div class="results-card">
 
-        <div class="desk"></div>
+                <div class="results-header">
+                    <div class="results-title-group">
+                        <span class="results-eyebrow">CHALLENGE COMPLETE</span>
+                        <h2>Test Summary</h2>
+                    </div>
+                    <button class="close-results-btn" id="closeResultsBtn">✕</button>
+                </div>
+
+                <!-- WPM HERO HEADLINE -->
+                <div class="results-wpm-block">
+                    <div class="wpm-large-group">
+                        <span class="wpm-number" id="resWpmVal">0</span>
+                        <span class="wpm-label">wpm</span>
+                    </div>
+                    <div class="raw-wpm-pill">
+                        <span id="resRawWpmVal">0</span> raw wpm
+                    </div>
+                </div>
+
+                <!-- PERFORMANCE TIMELINE GRAPH CANVAS -->
+                <div class="chart-container">
+                    <canvas id="resultsChart" width="650" height="150"></canvas>
+                </div>
+
+                <!-- 5 REQUIRED STATS GRID (EXACT USER MARKINGS) -->
+                <div class="stats-grid">
+
+                    <!-- 1. Accuracy -> Keyboard Trust Level -->
+                    <div class="stat-box">
+                        <div class="stat-title">Keyboard Trust Level</div>
+                        <div class="stat-value highlight-cyan" id="resTrustVal">100%</div>
+                        <div class="stat-sub" id="resTrustSub">Naive Trust</div>
+                    </div>
+
+                    <!-- 2. Errors -> Victims -->
+                    <div class="stat-box">
+                        <div class="stat-title">Victims</div>
+                        <div class="stat-value highlight-red" id="resVictimsVal">0</div>
+                        <div class="stat-sub">Keys Slaughtered</div>
+                    </div>
+
+                    <!-- 3. Time -> Time Wasted -->
+                    <div class="stat-box">
+                        <div class="stat-title">Time Wasted</div>
+                        <div class="stat-value" id="resTimeWastedVal">0.0s</div>
+                        <div class="stat-sub">Seconds Lost Forever</div>
+                    </div>
+
+                    <!-- 4. Progress -> Pointlessness Progress -->
+                    <div class="stat-box">
+                        <div class="stat-title">Pointlessness Progress</div>
+                        <div class="stat-value highlight-amber" id="resProgressVal">100%</div>
+                        <div class="stat-sub">Futile Effort Metric</div>
+                    </div>
+
+                    <!-- 5. Completion -> You Actually Finished This? -->
+                    <div class="stat-box full-width">
+                        <div class="stat-title">You Actually Finished This?</div>
+                        <div class="stat-value highlight-purple" id="resFinishedVal">YES</div>
+                        <div class="stat-sub" id="resFinishedSub">Unbelievable perseverance</div>
+                    </div>
+
+                </div>
+
+                <!-- MODAL ACTION BUTTONS -->
+                <div class="results-actions">
+                    <button class="btn btn-primary" id="resNextBtn">
+                        <span>↻</span> Next Challenge
+                    </button>
+                    <button class="btn btn-secondary" id="resCopyBtn">
+                        <span>📋</span> Copy Results
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <span>QWERTYn't Operating System</span>
+            <span>Remapped Alphabetical & Reversed Number Layout</span>
+        </footer>
 
     </div>
 
-
-
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
-
+    <!-- Scripts -->
     <script src="challenges.js"></script>
-
     <script src="keyboard.js"></script>
-
     <script src="timer.js"></script>
-
     <script src="statistics.js"></script>
-
     <script src="typingEngine.js"></script>
-
     <script src="main.js"></script>
-
-
 </body>
-
 </html>

@@ -1,213 +1,302 @@
 /* =========================================
-   QWERTYn't - TYPING UI
+   QWERTYn't - TYPING & KEYBOARD STYLES
+   Ethereal Glassmorphism Aesthetic
 ========================================= */
 
-
-/* =========================================
-   TYPING CHALLENGE
-========================================= */
-
-.challenge {
-    width: min(780px, 90%);
-
-    margin-bottom: 14px;
-
-    text-align: left;
-}
-
-.challenge-label {
-    margin-bottom: 7px;
-
-    color: var(--primary);
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.8px;
-}
-
-.challenge-text {
-    min-height: 24px;
-
-    color: #d8e2e8;
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    letter-spacing: 0.2px;
-}
-
-
-/* =========================================
-   KEYBOARD INFORMATION
-========================================= */
-
-.keyboard-info {
-    width: min(600px, 90%);
-
+/* LIVE STATS BAR */
+.live-stats-bar {
     display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
 
+.stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.55);
+    padding: 7px 18px;
+    border-radius: 24px;
+    border: 1.5px solid var(--border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 14px rgba(115, 85, 145, 0.08), inset 0 1px 1.5px #fff;
+    transition: all 0.2s ease;
+}
+
+.stat-pill:hover {
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 6px 18px rgba(115, 85, 145, 0.12), inset 0 1px 1.5px #fff;
+}
+
+.stat-pill-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.stat-pill-val {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 800;
+    color: #7c3aed;
+}
+
+
+/* =========================================
+   MONKEYTYPE WORD STREAM DISPLAY
+========================================= */
+
+.typing-area {
+    width: 100%;
+    max-width: 920px;
+    background: rgba(255, 255, 255, 0.46);
+    border: 1.5px solid var(--border-bright);
+    border-radius: var(--radius-lg);
+    padding: 38px 44px;
+    box-shadow: var(--shadow-main);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    position: relative;
+    margin-bottom: 24px;
+    transition: box-shadow 0.3s ease;
+}
+
+.words-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 12px 14px;
+    min-height: 120px;
+    font-family: var(--font-mono);
+    font-size: 24px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    user-select: none;
+    position: relative;
+}
+
+.word {
+    display: flex;
+    position: relative;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+
+.word.active-word {
+    border-bottom-color: rgba(139, 92, 246, 0.35);
+}
+
+.char {
+    color: var(--text-subtle);
+    transition: color 0.1s ease, background 0.1s ease;
+    position: relative;
+    border-radius: 3px;
+}
+
+.char.correct {
+    color: var(--text-bright);
+    font-weight: 600;
+}
+
+.char.incorrect {
+    color: #e11d48;
+    background: rgba(225, 29, 72, 0.14);
+    border-radius: 3px;
+}
+
+.char.extra {
+    color: #be123c;
+    opacity: 0.85;
+    font-size: 22px;
+    text-decoration: line-through;
+}
+
+/* SMOOTH CARETS */
+.caret {
+    position: absolute;
+    width: 2.5px;
+    background: linear-gradient(180deg, #c084fc, #7c3aed);
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
+    border-radius: 2px;
+    transition: transform 0.08s ease-out;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    animation: caretBlink 1.2s infinite;
+}
+
+@keyframes caretBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.typing-footer-hint {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.typing-footer-hint kbd {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: var(--font-mono);
+    color: var(--text-bright);
+    box-shadow: 0 2px 5px rgba(120, 90, 150, 0.08), inset 0 1px 1px #fff;
+}
+
+
+/* =========================================
+   RESTART CONTROLS
+========================================= */
+
+.remap-hud {
+    display: flex;
     align-items: center;
     justify-content: center;
-
-    gap: 18px;
-
-    margin-top: 22px;
+    margin-bottom: 28px;
 }
 
-
-/* =========================================
-   INFO CARD
-========================================= */
-
-.info-card {
-    min-width: 150px;
-
-    padding: 13px 20px;
-
-    text-align: center;
-
-    background: var(--panel);
-
-    border: 1px solid var(--border);
-
-    border-radius: 8px;
-
-    transition:
-        transform 0.15s ease,
-        border-color 0.15s ease,
-        background 0.15s ease;
-}
-
-.info-card.highlight {
-    border-color:
-        rgba(110, 231, 216, 0.25);
-
-    background:
-        rgba(110, 231, 216, 0.05);
-}
-
-.info-label {
-    margin-bottom: 5px;
-
-    color: var(--muted);
-
-    font-size: 7px;
-
+.restart-btn {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1.5px solid var(--border-bright);
+    color: var(--text-bright);
+    font-family: var(--font-sans);
+    font-size: 13px;
     font-weight: 700;
-
-    letter-spacing: 1.5px;
+    padding: 10px 24px;
+    border-radius: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-button);
+    margin: 0;
 }
 
-.info-value {
-    min-height: 24px;
-
-    color: var(--text);
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        monospace;
-
-    font-size: 17px;
-
-    font-weight: 700;
-}
-
-.info-card.highlight .info-value {
-    color: var(--primary);
-}
-
-
-/* =========================================
-   MAPPING ARROW
-========================================= */
-
-.mapping-arrow {
-    color: var(--primary);
-
-    font-size: 20px;
-
-    opacity: 0.7;
-}
-
-
-/* =========================================
-   KEY PRESS ANIMATION
-========================================= */
-
-.info-card.key-pressed {
+.restart-btn:hover {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-jewel);
     transform: translateY(-2px);
+}
 
-    border-color:
-        rgba(110, 231, 216, 0.55);
+.restart-btn:hover .restart-icon {
+    transform: rotate(180deg);
+}
 
-    background:
-        rgba(110, 231, 216, 0.09);
-
-    box-shadow:
-        0 0 18px rgba(110, 231, 216, 0.08);
+.restart-icon {
+    font-size: 15px;
+    transition: transform 0.35s ease;
 }
 
 
 /* =========================================
-   CHARACTER COUNT
+   ON-SCREEN VIRTUAL KEYBOARD
 ========================================= */
 
-#characterCount {
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        monospace;
+.keyboard-wrapper {
+    width: 100%;
+    max-width: 820px;
+    background: rgba(255, 255, 255, 0.42);
+    border: 1.5px solid var(--border-bright);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-main);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
 }
 
-
-/* =========================================
-   TYPING STATUS
-========================================= */
-
-#keyStatus {
-    transition: color 0.2s ease;
+.keyboard-title {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
 }
 
-#keyStatus.active {
-    color: var(--primary);
+.virtual-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+    align-items: center;
 }
 
+.kb-row {
+    display: flex;
+    gap: 9px;
+    width: 100%;
+    justify-content: center;
+}
 
-/* =========================================
-   MOBILE
-========================================= */
+.key {
+    position: relative;
+    width: 54px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    user-select: none;
+    transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(120, 90, 150, 0.08), inset 0 1px 1.5px #fff;
+    backdrop-filter: blur(12px);
+}
 
-@media (max-width: 600px) {
+/* Character in Key */
+.key-output {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-bright);
+    transition: color 0.12s ease;
+}
 
-    .keyboard-info {
-        gap: 8px;
+/* Spacebar */
+.key-space {
+    width: min(340px, 80%);
+    height: 44px;
+}
+
+.key-space .key-output {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+}
+
+/* KEY ACTIVE PRESS STATE - GLOWING AMETHYST JEWEL */
+.key.active {
+    background: var(--primary-gradient);
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.85);
+    transform: translateY(2px) scale(0.97);
+}
+
+.key.active .key-output {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 700px) {
+    .key {
+        width: 34px;
+        height: 42px;
     }
-
-    .info-card {
-        min-width: 110px;
-
-        padding: 11px 12px;
-    }
-
-    .mapping-arrow {
-        font-size: 16px;
-    }
-
-    .info-value {
-        font-size: 15px;
-    }
-
-    .challenge-text {
-        font-size: 12px;
-    }
+    .key-output { font-size: 14px; }
+    .words-container { font-size: 18px; }
 }

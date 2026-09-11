@@ -1,29 +1,58 @@
 /* =========================================
-   QWERTYn't - MAIN UI
+   QWERTYn't - ETHEREAL GLASSMORPHIC DESIGN
+   Inspired by Iridescent Frosted Glass Aesthetics
 ========================================= */
 
 :root {
-    --bg: #080b10;
-    --monitor: #151a22;
-    --screen: #0d1b2a;
+    /* Background & Surfaces */
+    --bg-base: #dfd3ea;
+    --bg-panel: rgba(255, 255, 255, 0.48);
+    --bg-surface: rgba(255, 255, 255, 0.52);
+    --bg-card: rgba(255, 255, 255, 0.65);
+    --bg-card-hover: rgba(255, 255, 255, 0.78);
 
-    --primary: #6ee7d8;
-    --primary-soft: #9ff3e9;
+    /* Jewel Primary Accent (Amethyst / Violet Glow) */
+    --primary: #8b5cf6;
+    --primary-gradient: linear-gradient(135deg, #b76eeb 0%, #7c3aed 100%);
+    --primary-glow: rgba(139, 92, 246, 0.35);
+    --primary-soft: rgba(139, 92, 246, 0.12);
 
-    --text: #f4f7f8;
-    --muted: #8997a6;
+    /* Secondary Jewel Accents (Cyan Aqua & Rose) */
+    --cyan-accent: #06b6d4;
+    --cyan-gradient: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+    --cyan-glow: rgba(6, 182, 212, 0.35);
 
-    --panel: #132638;
-    --panel-light: #193247;
+    --accent-red: #e11d48;
+    --accent-amber: #f59e0b;
+    --accent-purple: #9333ea;
+    --accent-pink: #ec4899;
 
-    --border: rgba(255, 255, 255, 0.08);
-    --shadow: rgba(0, 0, 0, 0.45);
+    /* High-legibility Plum & Slate Typography */
+    --text-bright: #26133d;
+    --text-normal: #48385e;
+    --text-muted: #7e6f96;
+    --text-subtle: #a497b7;
+
+    /* Glass Borders & Specular Sheen */
+    --border: rgba(255, 255, 255, 0.72);
+    --border-bright: rgba(255, 255, 255, 0.95);
+    --border-subtle: rgba(255, 255, 255, 0.45);
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --radius-pill: 9999px;
+
+    /* Layered glass shadows with ambient purple tint */
+    --shadow-main: 0 20px 50px rgba(110, 80, 145, 0.14), 0 4px 12px rgba(140, 105, 175, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+    --shadow-card: 0 14px 36px rgba(115, 85, 145, 0.12), inset 0 1px 1.5px rgba(255, 255, 255, 0.95);
+    --shadow-button: 0 6px 18px rgba(120, 90, 150, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    --shadow-jewel: 0 8px 24px rgba(124, 58, 237, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'Fira Code', Consolas, monospace;
+    --font-display: 'Outfit', 'Inter', sans-serif;
 }
-
-
-/* =========================================
-   RESET
-========================================= */
 
 * {
     box-sizing: border-box;
@@ -31,507 +60,250 @@
     padding: 0;
 }
 
-html,
-body {
+html, body {
     width: 100%;
-    min-height: 100%;
-}
-
-body {
-    background:
-        radial-gradient(
-            circle at top,
-            #101b28 0%,
-            var(--bg) 55%
-        );
-
-    color: var(--text);
-
-    font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
+    min-height: 100vh;
+    background: var(--bg-base);
+    color: var(--text-normal);
+    font-family: var(--font-sans);
     overflow-x: hidden;
 }
 
-
-/* =========================================
-   COMPUTER
-========================================= */
-
-.pc {
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 50px 20px 0;
-}
-
-
-/* =========================================
-   MONITOR
-========================================= */
-
-.monitor {
-    width: min(1100px, 95vw);
-
-    background: var(--monitor);
-
-    padding: 14px;
-
-    border-radius: 18px;
-
-    border: 1px solid rgba(255, 255, 255, 0.06);
-
-    box-shadow:
-        0 30px 70px var(--shadow),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-
-/* =========================================
-   SCREEN
-========================================= */
-
-.screen {
-    min-height: 650px;
-
-    display: flex;
-    flex-direction: column;
-
+body {
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(110, 231, 216, 0.06),
-            transparent 40%
-        ),
-        var(--screen);
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    border: 1px solid var(--border);
+        radial-gradient(ellipse at 20% 8%, rgba(216, 180, 254, 0.6) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 15%, rgba(165, 243, 252, 0.55) 0%, transparent 45%),
+        radial-gradient(circle at 50% 45%, rgba(254, 240, 138, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(244, 114, 182, 0.38) 0%, transparent 45%),
+        radial-gradient(ellipse at 12% 85%, rgba(192, 132, 252, 0.42) 0%, transparent 45%),
+        linear-gradient(135deg, #e3d7ec 0%, #d6c6e3 40%, #e6dbeb 70%, #dbcbdf 100%);
+    background-attachment: fixed;
+    position: relative;
 }
 
+/* Ambient Dappled Sunlight & Caustics */
+body::before {
+    content: '';
+    position: fixed;
+    top: -120px;
+    left: -80px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.35) 0%, rgba(216, 180, 254, 0.15) 50%, transparent 70%);
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 680px;
+    height: 680px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(165, 243, 252, 0.35) 0%, rgba(244, 114, 182, 0.2) 50%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
 
 /* =========================================
-   TOP BAR
+   TOPBAR & CONFIG BAR
 ========================================= */
 
 .topbar {
-    height: 58px;
-
+    height: 76px;
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
-    padding: 0 28px;
-
     border-bottom: 1px solid var(--border);
-
-    background: rgba(0, 0, 0, 0.12);
+    padding: 12px 0;
+    gap: 16px;
 }
 
 .brand {
     display: flex;
-
     align-items: center;
-
-    gap: 9px;
-
-    font-size: 14px;
-    font-weight: 700;
-
-    letter-spacing: 0.8px;
+    gap: 10px;
 }
 
 .brand-dot {
-    width: 8px;
-    height: 8px;
-
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #f5d0fe, #a855f7 60%, #6b21a8 100%);
+    box-shadow: 0 2px 10px rgba(168, 85, 247, 0.55), inset 0 1px 1px #fff;
+}
 
-    background: var(--primary);
+.brand-name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-bright);
+}
 
-    box-shadow:
-        0 0 10px rgba(110, 231, 216, 0.7);
+.brand-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 6px;
+    background: rgba(139, 92, 246, 0.14);
+    color: #7c3aed;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    letter-spacing: 0.5px;
+}
+
+/* MONKEYTYPE CONFIG BAR */
+.config-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-panel);
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1.5px solid var(--border);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: var(--shadow-card);
+}
+
+.config-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.config-divider {
+    width: 1px;
+    height: 18px;
+    background: var(--border);
+}
+
+.config-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.config-btn:hover {
+    color: var(--text-bright);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.config-btn.active {
+    color: #ffffff;
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35), inset 0 1px 1.5px rgba(255, 255, 255, 0.7);
 }
 
 .system-status {
     display: flex;
-
     align-items: center;
-
     gap: 8px;
-
-    color: var(--muted);
-
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
-
-    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    letter-spacing: 1.2px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 8px rgba(120, 95, 145, 0.06);
 }
 
 .status-dot {
-    width: 6px;
-    height: 6px;
-
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-
-    background: #6ee7d8;
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981, inset 0 1px 1px #fff;
 }
 
-
 /* =========================================
-   MAIN CONTENT
+   MAIN CONTENT & HERO
 ========================================= */
 
-.screen-content {
+.main-content {
     flex: 1;
-
     display: flex;
     flex-direction: column;
-
     align-items: center;
-
-    padding: 55px 30px 45px;
+    padding: 36px 0 30px;
 }
 
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero {
-    width: min(780px, 90%);
-
+.hero-header {
     text-align: center;
-
-    margin-bottom: 30px;
+    max-width: 680px;
+    margin-bottom: 26px;
 }
 
-.eyebrow {
-    color: var(--primary);
-
-    font-size: 9px;
+.hero-header h1 {
+    font-family: var(--font-display);
+    font-size: 34px;
     font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 13px;
+    color: var(--text-bright);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
-.hero h1 {
-    font-size: clamp(28px, 4vw, 46px);
-
-    line-height: 1.1;
-
-    letter-spacing: -1.5px;
-
-    font-weight: 750;
+.hero-header h1 span {
+    background: linear-gradient(135deg, #d946ef 0%, #8b5cf6 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    font-weight: 800;
 }
-
-.hero h1 span {
-    color: var(--primary);
-}
-
-.hero p {
-    margin-top: 17px;
-
-    color: var(--muted);
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
 
 /* =========================================
-   EDITOR
+   FOOTER
 ========================================= */
 
-.editor {
-    width: min(780px, 90%);
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    background: rgba(0, 0, 0, 0.18);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.18);
-}
-
-
-/* =========================================
-   EDITOR HEADER
-========================================= */
-
-.editor-header {
-    height: 42px;
-
+.app-footer {
+    height: 48px;
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
-    padding: 0 15px;
-
-    background: var(--panel);
-
-    border-bottom: 1px solid var(--border);
-}
-
-.editor-title {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: #dbe5ea;
-
+    border-top: 1px solid var(--border);
     font-size: 11px;
+    color: var(--text-muted);
+    padding: 10px 0;
 }
 
-.file-icon {
-    color: var(--primary);
-
-    font-size: 13px;
-}
-
-.editor-status {
-    color: var(--muted);
-
-    font-size: 8px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-
-/* =========================================
-   TEXTAREA
-========================================= */
-
-#output {
-    width: 100%;
-
-    min-height: 230px;
-
-    resize: none;
-
-    display: block;
-
-    padding: 22px;
-
-    border: none;
-
-    outline: none;
-
-    background: #0a1724;
-
-    color: #e6f1f3;
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-
-    caret-color: var(--primary);
-}
-
-#output::placeholder {
-    color: #536777;
-}
-
-#output:focus {
-    box-shadow:
-        inset 0 0 0 1px rgba(110, 231, 216, 0.15);
-}
-
-
-/* =========================================
-   EDITOR FOOTER
-========================================= */
-
-.editor-footer {
-    min-height: 34px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 15px;
-
-    color: var(--muted);
-
-    font-size: 9px;
-
-    background: var(--panel);
-
-    border-top: 1px solid var(--border);
-}
-
-.live-dot {
-    display: inline-block;
-
-    width: 5px;
-    height: 5px;
-
-    margin-right: 6px;
-
-    border-radius: 50%;
-
-    background: var(--primary);
-}
-
-
-/* =========================================
-   SCREEN FOOTER
-========================================= */
-
-.screen-footer {
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 28px;
-
-    color: #607181;
-
-    font-size: 8px;
-
-    letter-spacing: 1px;
-
-    border-top: 1px solid var(--border);
-}
-
-
-/* =========================================
-   MONITOR STAND
-========================================= */
-
-.monitor-stand {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-}
-
-.stand-neck {
-    width: 100px;
-    height: 55px;
-
-    background: var(--monitor);
-
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-}
-
-.stand-base {
-    width: 220px;
-    height: 12px;
-
-    border-radius: 8px 8px 2px 2px;
-
-    background: #12171e;
-
-    box-shadow:
-        0 8px 15px rgba(0, 0, 0, 0.4);
-}
-
-
-/* =========================================
-   DESK
-========================================= */
-
-.desk {
-    width: min(1300px, 100vw);
-
-    height: 18px;
-
-    margin-top: 8px;
-
-    background: #10151c;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-
-    box-shadow:
-        0 -5px 20px rgba(0, 0, 0, 0.3);
-}
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 700px) {
-
-    .pc {
-        padding: 20px 10px 0;
-    }
-
-    .monitor {
-        width: 100%;
-
-        padding: 7px;
-
-        border-radius: 12px;
-    }
-
-    .screen {
-        min-height: 600px;
-    }
-
+@media (max-width: 850px) {
     .topbar {
-        padding: 0 15px;
+        flex-direction: column;
+        height: auto;
+        gap: 12px;
     }
-
-    .screen-content {
-        padding: 40px 15px;
+    .config-bar {
+        flex-wrap: wrap;
+        justify-content: center;
     }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    .hero p {
-        font-size: 12px;
-    }
-
-    .editor,
-    .challenge {
-        width: 100%;
-    }
-
-    .keyboard-info {
-        width: 100%;
-    }
-
-    .stand-base {
-        width: 150px;
+    .hero-header h1 {
+        font-size: 26px;
     }
 }
